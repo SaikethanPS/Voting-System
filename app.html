@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Verify Aadhaar</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+        <link href="css/animate.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+        <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+    </head>
+    <body class="gray-bg">
+        <div class="middle-box text-center loginscreen animated fadeInDown">
+            <div>
+                <div>
+                    <h1 class="logo-name"><img src="images/e-voting-logo.png" width="150"></h1>
+                </div>
+                <h3>Verify Aadhaar</h3>
+                <div class="m-t" id="enter_aadhaarno" role="form" action="#"  >
+                    <div class="form-group">
+                         <input onkeypress="return isNumberKey(event)" id="aadhaar_no" name="aadhaarno" class="form-control" placeholder="Aadhaar No" required autofocus>
+                    </div>
+                   
+                    <button id="getotp" class="btn btn-primary block full-width m-b login">Get OTP</button>
+                    
+                </div>
+                
+                
+                <div class="m-t" id="verify_otp_model" role="form" action="#"  >
+                    <div class="form-group">
+                         <input onkeypress="return isNumberKey(event)" id="verify_otp" name="aadhaarno" class="form-control" placeholder="Enter OTP" required autofocus>
+                    </div>
+                   
+                    <button id="verifyotp" class="btn btn-primary block full-width m-b login">Verify OTP</button>
+                    
+                </div>
+                <br>
+
+            </div>
+        </div>  
+
+
+
+
+        <div class="footer">
+            <ul class="class   copy-right">
+                <div>
+                    <p align="center">Made by <i class="fa fa-heart" style="color:rgb(255, 153, 0);"></i> TEAM UMBER</p>
+                </div>
+                
+               
+            </ul>
+            
+        </div>
+        <!-- Mainly scripts -->
+<script>
+    // Define the aadhaar_no_phone_no object
+    var aadhaar_no_phone_no = {
+      "982800393225": "8008543955",
+      "982800393226": "9381045553",
+      "982800393227": "7569937084",
+    };
+  
+    // Handle the click event on the Get OTP button
+    $("#getotp").click(function() {
+      var aadhaarNo = $("#aadhaar_no").val();
+      var phoneNo = aadhaar_no_phone_no[aadhaarNo];
+  
+      // Check if the Aadhaar number is valid
+      if (phoneNo) {
+        // Send the OTP to the user's phone number
+        // ...
+      } else {
+        // Display an error message
+        $("#error").html("Invalid Aadhaar number");
+        $("#errorbox").show();
+      }
+    });
+  
+    // Handle the click event on the Verify OTP button
+    $("#verifyotp").click(function() {
+      var otp = $("#verify_otp").val();
+  
+      // Verify the OTP
+      // ...
+    });
+  
+    // Function to allow only numbers to be entered in the Aadhaar number input
+    function isNumberKey(evt) {
+      var charCode = (evt.which) ? evt.which : event.keyCode;
+      if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        return false;
+      }
+      return true;
+    }
+  </script>
+    </body>
+
+  
+</html>
